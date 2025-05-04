@@ -28,8 +28,8 @@ public class Article {
     private String image = "";
 
     @NotNull
-    @OneToOne
-    @JoinColumn(name = "categoryId")
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @Builder.Default
