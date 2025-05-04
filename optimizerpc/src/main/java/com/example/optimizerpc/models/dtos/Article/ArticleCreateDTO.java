@@ -20,9 +20,6 @@ public class ArticleCreateDTO {
     private String image;
 
     @NotNull
-    private Category category;
-
-    @NotNull
     @NotBlank
-    private Double price = 0.0;
+    private Double price;
 }

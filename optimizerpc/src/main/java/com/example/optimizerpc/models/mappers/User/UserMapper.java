@@ -3,7 +3,9 @@ package com.example.optimizerpc.models.mappers.User;
 import com.example.optimizerpc.models.dtos.User.UserDTO;
 import com.example.optimizerpc.models.entities.User.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserMapper {
 
     private final ModelMapper modelMapper;

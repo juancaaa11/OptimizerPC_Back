@@ -1,10 +1,8 @@
 package com.example.optimizerpc.models.entities.Category;
 
+import com.example.optimizerpc.models.enums.Category.CategoryType;
 import com.github.ksuid.Ksuid;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -25,4 +23,9 @@ public class Category {
     @Builder.Default
     @NotNull
     private String name = "";
+
+    @Builder.Default
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private CategoryType type = CategoryType.OPTIMIZATION;
 }

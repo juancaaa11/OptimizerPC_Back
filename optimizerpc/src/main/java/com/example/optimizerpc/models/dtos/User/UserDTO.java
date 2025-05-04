@@ -9,24 +9,17 @@ import lombok.*;
 @AllArgsConstructor
 public class UserDTO {
 
-    @Builder.Default
-    private String name = "";
+    private String name ;
 
-    @Builder.Default
-    private String firstLastName = "";
+    private String firstLastName;
 
-    @Builder.Default
-    private String secondLastName = "";
+    private String secondLastName;
 
-    @Builder.Default
-    private String email = "";
+    private String email;
 
-    @Builder.Default
-    private String username = "";
+    private String username ;
 
-    @Builder.Default
-    private String phone = "";
+    private String phone ;
 
-    @Builder.Default
-    private String address = "";
+    private String address;
 }

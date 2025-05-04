@@ -10,20 +10,13 @@ import lombok.*;
 @AllArgsConstructor
 public class ArticleDTO {
 
-    @Builder.Default
-    private String id = "";
+    private String id ;
 
-    @Builder.Default
-    private String name = "";
+    private String name;
 
-    @Builder.Default
-    private String image = "";
+    private String image;
 
-    @Builder.Default
-    private Category category = new Category();
-
-    @Builder.Default
-
+    private Category category;
 
     private Double price = 0.0;
 }

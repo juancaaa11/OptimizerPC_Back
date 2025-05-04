@@ -1,5 +1,6 @@
 package com.example.optimizerpc.models.dtos.Category;
 
+import com.example.optimizerpc.models.enums.Category.CategoryType;
 import lombok.*;
 
 @Getter
@@ -9,9 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 public class CategoryDTO {
 
-    @Builder.Default
-    private String id = "";
+    private String id;
 
-    @Builder.Default
-    private String name = "";
+    private String name;
+
+    private CategoryType type;
 }
