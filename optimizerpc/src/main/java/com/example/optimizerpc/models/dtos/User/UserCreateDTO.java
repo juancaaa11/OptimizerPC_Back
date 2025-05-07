@@ -14,20 +14,10 @@ public class UserCreateDTO {
     private String name;
 
     @NotNull
-    private String firstLastName;
-
-    private String secondLastName;
-
-    @NotNull
     private String email;
 
     @NotNull
     private String username;
-
-    private String phone;
-
-    @NotNull
-    private String address;
 
     @NotNull
     private String password;

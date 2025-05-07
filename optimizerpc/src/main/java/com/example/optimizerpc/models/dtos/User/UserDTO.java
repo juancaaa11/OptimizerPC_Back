@@ -11,10 +11,6 @@ public class UserDTO {
 
     private String name ;
 
-    private String firstLastName;
-
-    private String secondLastName;
-
     private String email;
 
     private String username ;

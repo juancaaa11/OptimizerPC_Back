@@ -29,13 +29,6 @@ public class User {
 
     @Builder.Default
     @NotNull
-    private String firstLastName = "";
-
-    @Builder.Default
-    private String secondLastName = "";
-
-    @Builder.Default
-    @NotNull
     @Email
     private String email = "";
 
@@ -48,7 +41,6 @@ public class User {
     private String phone = "";
 
     @Builder.Default
-    @NotNull
     private String address = "";
 
     @Column(nullable = false)

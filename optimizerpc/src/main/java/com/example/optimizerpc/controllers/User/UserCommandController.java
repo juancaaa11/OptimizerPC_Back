@@ -35,7 +35,7 @@ public class UserCommandController {
         this.mapper = mapper;
     }
 
-    @PutMapping("/user")
+    @PostMapping("/user")
     @Operation(summary = "Create a new user" , description = "Create a new user")
     public ResponseEntity<UserDTO> create(@RequestBody @Valid UserCreateDTO request){
 
