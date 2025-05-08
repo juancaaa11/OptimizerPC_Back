@@ -1,20 +1,14 @@
-# Usamos una imagen oficial de OpenJDK
-FROM openjdk:22-jdk
+FROM maven:3.9.6-openjdk-22
 
-# Instalamos Maven
-RUN apt-get update && apt-get install -y maven
-
-# Copiamos el proyecto dentro del contenedor
-COPY . /app
-
-# Configuramos el directorio de trabajo
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Instalamos las dependencias y construimos el proyecto
+# Copia todo el proyecto al contenedor
+COPY . /app
+
+# Compila el proyecto sin ejecutar tests
 RUN mvn clean install -DskipTests
 
-# Exponemos el puerto que la aplicación va a usar (por ejemplo, 8080)
-EXPOSE 8080
-
-# Ejecutamos el archivo .jar generado por Maven
+# Comando para ejecutar la aplicación
 CMD ["java", "-jar", "target/optimizerpc-0.0.1-SNAPSHOT.jar"]
+
