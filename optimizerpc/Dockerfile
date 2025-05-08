@@ -1,4 +1,4 @@
-FROM maven:3.9.6-openjdk-22
+FROM maven:3.9.6-temurin-21
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
