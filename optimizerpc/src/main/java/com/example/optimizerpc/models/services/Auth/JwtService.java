@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtService {
 
     private static final String SECRET = "tu_clave_secreta_muy_segura_que_tenga_minimo_32_chars";
-    private static final long EXPIRATION_MS = 24 * 60 * 60 * 1000; // 1 día
+    private static final long EXPIRATION_MS = 30 * 60 * 1000;
 
     private Key getKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes());

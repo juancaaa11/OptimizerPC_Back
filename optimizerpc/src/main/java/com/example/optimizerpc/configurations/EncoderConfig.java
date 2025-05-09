@@ -1,6 +1,5 @@
 package com.example.optimizerpc.configurations;
 
-import com.example.optimizerpc.models.repository.User.UserRepository;
 import com.example.optimizerpc.models.services.Auth.CustomUserDetailsService;
 import com.example.optimizerpc.models.services.User.IUserService;
 import org.springframework.context.annotation.Bean;
