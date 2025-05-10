@@ -1,7 +1,6 @@
 package com.example.optimizerpc.controllers.Category;
 
 import com.example.optimizerpc.models.adapters.Category.CategoryAdapter;
-import com.example.optimizerpc.models.dtos.Article.ArticleDTO;
 import com.example.optimizerpc.models.dtos.Category.CategoryDTO;
 import com.example.optimizerpc.models.mappers.Category.CategoryMapper;
 import com.example.optimizerpc.models.services.Category.ICategoryService;
