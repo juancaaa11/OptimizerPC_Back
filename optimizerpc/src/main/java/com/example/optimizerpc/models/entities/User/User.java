@@ -29,6 +29,7 @@ public class User {
 
     @Builder.Default
     @NotNull
+    @Column(nullable = false, unique = true)
     @Email
     private String email = "";
 
