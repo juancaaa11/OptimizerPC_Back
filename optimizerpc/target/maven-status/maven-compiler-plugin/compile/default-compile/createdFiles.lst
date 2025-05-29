@@ -56,6 +56,8 @@ com\example\optimizerpc\models\services\Auth\JwtFilter.class
 com\example\optimizerpc\models\services\User\IUserService.class
 com\example\optimizerpc\controllers\Article\ArticleCommandController.class
 com\example\optimizerpc\models\mappers\User\UserMapper.class
+com\example\optimizerpc\models\services\utils\EmailService.class
 com\example\optimizerpc\models\adapters\User\UserAdapter.class
 com\example\optimizerpc\models\dtos\Category\CategoryDTO$CategoryDTOBuilder.class
+com\example\optimizerpc\models\services\utils\EmailService$1.class
 com\example\optimizerpc\models\dtos\AuthRequest$AuthRequestBuilder.class

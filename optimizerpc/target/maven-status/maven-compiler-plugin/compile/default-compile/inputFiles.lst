@@ -42,5 +42,6 @@ C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\j
 C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\models\services\Category\ICategoryService.java
 C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\models\services\User\IUserService.java
 C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\models\services\User\UserServiceImpl.java
+C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\models\services\utils\EmailService.java
 C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\OptimizerPcBackApplication.java
 C:\Users\PC-JUANCA\Documents\OptimizerPC\OptimizerPC_Back\optimizerpc\src\main\java\com\example\optimizerpc\ServletInitializer.java
