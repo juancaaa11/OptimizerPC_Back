@@ -9,10 +9,7 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -30,7 +27,7 @@ public class SaleCommandController {
 
     @PostMapping("/sale")
     @Operation(summary = "Create a new sale" , description = "Create a new sale")
-    public ResponseEntity<SaleDTO> create(@RequestBody @Valid Double price){
+    public ResponseEntity<SaleDTO> create(@RequestParam ("price") Double price){
 
         SaleDTO sale = mapper.mapDTO(saleAdapter.create(price));
 
