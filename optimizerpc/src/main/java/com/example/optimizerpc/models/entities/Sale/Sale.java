@@ -1,11 +1,9 @@
 package com.example.optimizerpc.models.entities.Sale;
 
+import com.example.optimizerpc.models.entities.User.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.ksuid.Ksuid;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -31,4 +29,9 @@ public class Sale {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

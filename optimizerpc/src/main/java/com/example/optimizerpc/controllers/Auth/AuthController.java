@@ -1,7 +1,9 @@
 package com.example.optimizerpc.controllers.Auth;
 
 import com.example.optimizerpc.models.dtos.AuthRequest;
+import com.example.optimizerpc.models.entities.User.User;
 import com.example.optimizerpc.models.services.Auth.JwtService;
+import com.example.optimizerpc.models.services.User.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v0")
@@ -18,10 +21,12 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final IUserService userService;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtService jwtService) {
+    public AuthController(AuthenticationManager authenticationManager, JwtService jwtService, IUserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
+        this.userService = userService;
     }
 
     @PostMapping("/auth")
@@ -36,10 +41,14 @@ public class AuthController {
 
             String token = jwtService.generateToken(authentication);
 
-            return ResponseEntity.ok(Map.of(
+            Optional<User> user = userService.findByUsername(authentication.getName());
+
+            return user.<ResponseEntity<?>>map(value -> ResponseEntity.ok(Map.of(
                     "token", token,
-                    "username", authentication.getName()
-            ));
+                    "username", authentication.getName(),
+                    "id", value.getId()
+            ))).orElseGet(() -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "Usuario no encontrado tras autenticación")));
 
         } catch (BadCredentialsException ex) {
             return ResponseEntity
