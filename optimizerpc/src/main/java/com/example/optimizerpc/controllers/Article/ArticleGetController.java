@@ -49,17 +49,4 @@ public class ArticleGetController {
 
         return new ResponseEntity<>(articlesList, HttpStatus.OK);
     }
-
-    @DeleteMapping("/article/{id}")
-    @Operation(summary = "Delete an article.", description = "Delete an article.")
-    public ResponseEntity<Map<String, String>> delete(@PathVariable("id")String id){
-
-        Article article = articleService.findById(id);
-
-        articleService.delete(article);
-
-        Map<String, String> response = Map.of("message", "Article deleted successfully.");
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 }
