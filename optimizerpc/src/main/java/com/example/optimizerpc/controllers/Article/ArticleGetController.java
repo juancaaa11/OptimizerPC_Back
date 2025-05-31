@@ -2,6 +2,7 @@ package com.example.optimizerpc.controllers.Article;
 
 import com.example.optimizerpc.models.adapters.Article.ArticleAdapter;
 import com.example.optimizerpc.models.dtos.Article.ArticleDTO;
+import com.example.optimizerpc.models.entities.Article.Article;
 import com.example.optimizerpc.models.mappers.Article.ArticleMapper;
 import com.example.optimizerpc.models.services.Article.IArticleService;
 import com.example.optimizerpc.models.specifications.ArticleSpecification;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v0")
@@ -46,5 +48,18 @@ public class ArticleGetController {
         List<ArticleDTO> articlesList = articleService.findAll(specification).stream().map(mapper::mapDTO).toList();
 
         return new ResponseEntity<>(articlesList, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/article/{id}")
+    @Operation(summary = "Delete an article.", description = "Delete an article.")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id")String id){
+
+        Article article = articleService.findById(id);
+
+        articleService.delete(article);
+
+        Map<String, String> response = Map.of("message", "Article deleted successfully.");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
