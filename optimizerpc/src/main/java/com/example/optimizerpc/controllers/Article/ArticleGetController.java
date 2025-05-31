@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v0")
-@Tag(name = "Article - Event API")
+@Tag(name = "Article API")
 public class ArticleGetController {
 
     private final IArticleService articleService;

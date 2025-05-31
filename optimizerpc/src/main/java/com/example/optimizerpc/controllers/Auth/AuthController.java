@@ -4,6 +4,7 @@ import com.example.optimizerpc.models.dtos.AuthRequest;
 import com.example.optimizerpc.models.entities.User.User;
 import com.example.optimizerpc.models.services.Auth.JwtService;
 import com.example.optimizerpc.models.services.User.IUserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/v0")
+@Tag(name = "Auth - Event API")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
