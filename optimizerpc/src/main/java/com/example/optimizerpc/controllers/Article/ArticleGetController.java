@@ -4,14 +4,12 @@ import com.example.optimizerpc.models.adapters.Article.ArticleAdapter;
 import com.example.optimizerpc.models.dtos.Article.ArticleDTO;
 import com.example.optimizerpc.models.mappers.Article.ArticleMapper;
 import com.example.optimizerpc.models.services.Article.IArticleService;
+import com.example.optimizerpc.models.specifications.ArticleSpecification;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,9 +39,11 @@ public class ArticleGetController {
 
     @GetMapping("/s/article")
     @Operation(summary = "Get all articles", description = "Get all articles")
-    public ResponseEntity<List<ArticleDTO>> getAll(){
+    public ResponseEntity<List<ArticleDTO>> getAll(@RequestParam(value = "search", required = false) String search){
 
-        List<ArticleDTO> articlesList = articleService.findAll().stream().map(mapper::mapDTO).toList();
+        ArticleSpecification specification = new ArticleSpecification(search);
+
+        List<ArticleDTO> articlesList = articleService.findAll(specification).stream().map(mapper::mapDTO).toList();
 
         return new ResponseEntity<>(articlesList, HttpStatus.OK);
     }
