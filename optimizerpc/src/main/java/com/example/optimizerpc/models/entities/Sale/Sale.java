@@ -27,7 +27,7 @@ public class Sale {
     @Builder.Default
     private Double price = 0.0;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Europe/Madrid")
     private Date date;
 
     @NotNull

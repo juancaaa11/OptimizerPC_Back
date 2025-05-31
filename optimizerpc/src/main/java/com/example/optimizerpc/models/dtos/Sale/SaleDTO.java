@@ -18,7 +18,7 @@ public class SaleDTO {
     @Builder.Default
     private Double price = 0.0;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Europe/Madrid")
     @Builder.Default
     private Date date = new Date();
 }
