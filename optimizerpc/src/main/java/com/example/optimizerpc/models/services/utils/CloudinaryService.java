@@ -23,12 +23,11 @@ public class CloudinaryService {
         return uploadResult.get("secure_url").toString();
     }
 
-    public String uploadBase64(String base64Image) throws IOException {
-
-        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-
-        Map uploadResult = cloudinary.uploader().upload(imageBytes, ObjectUtils.emptyMap());
-
+    public String uploadBase64(String base64ImageWithPrefix) throws IOException {
+        // Subimos directamente la cadena base64 con prefijo
+        Map uploadResult = cloudinary.uploader().upload(base64ImageWithPrefix, ObjectUtils.emptyMap());
         return (String) uploadResult.get("secure_url");
     }
+
+
 }
