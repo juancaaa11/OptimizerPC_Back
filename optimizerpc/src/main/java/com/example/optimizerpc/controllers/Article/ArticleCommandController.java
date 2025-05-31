@@ -6,6 +6,7 @@ import com.example.optimizerpc.models.dtos.Article.ArticleDTO;
 import com.example.optimizerpc.models.entities.Article.Article;
 import com.example.optimizerpc.models.mappers.Article.ArticleMapper;
 import com.example.optimizerpc.models.services.Article.IArticleService;
+import com.example.optimizerpc.models.services.utils.CloudinaryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,19 +31,24 @@ public class ArticleCommandController {
     private final IArticleService articleService;
     private final ArticleAdapter articleAdapter;
     private final ArticleMapper mapper;
+    private final CloudinaryService cloudinaryService;
 
-    public ArticleCommandController(IArticleService articleService, ArticleAdapter articleAdapter, ArticleMapper mapper) {
+    public ArticleCommandController(IArticleService articleService, ArticleAdapter articleAdapter, ArticleMapper mapper, CloudinaryService cloudinaryService) {
         this.articleService = articleService;
         this.articleAdapter = articleAdapter;
         this.mapper = mapper;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @PostMapping("/article")
     @Operation(summary = "Create a new article.", description = "Create a new article.")
     public ResponseEntity<ArticleDTO> create(@RequestBody @Valid ArticleCreateDTO request,
+                                             @RequestPart("image") MultipartFile image,
                                              @RequestParam(value = "categoryId", required = false) String categoryId) throws IOException {
 
-        ArticleDTO article = mapper.mapDTO(articleAdapter.create(request, categoryId));
+        String imageUrl = cloudinaryService.uploadImage(image);
+
+        ArticleDTO article = mapper.mapDTO(articleAdapter.create(request, categoryId, imageUrl));
 
         return new ResponseEntity<>(article, HttpStatus.CREATED);
     }

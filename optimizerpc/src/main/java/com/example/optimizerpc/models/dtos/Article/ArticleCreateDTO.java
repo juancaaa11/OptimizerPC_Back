@@ -17,8 +17,6 @@ public class ArticleCreateDTO {
     @NotBlank
     private String name;
 
-    private MultipartFile image;
-
     @NotNull
     @NotBlank
     private Double price;
