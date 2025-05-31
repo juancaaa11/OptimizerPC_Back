@@ -42,7 +42,7 @@ public class ArticleCommandController {
 
     @PostMapping("/article")
     @Operation(summary = "Create a new article.", description = "Create a new article.")
-    public ResponseEntity<ArticleDTO> create(@RequestBody @Valid ArticleCreateDTO request,
+    public ResponseEntity<ArticleDTO> create(@RequestPart("article") @Valid ArticleCreateDTO request,
                                              @RequestPart("image") MultipartFile image,
                                              @RequestParam(value = "categoryId", required = false) String categoryId) throws IOException {
 
