@@ -16,6 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class ArticleCommandController {
     @PostMapping("/article")
     @Operation(summary = "Create a new article.", description = "Create a new article.")
     public ResponseEntity<ArticleDTO> create(@RequestBody @Valid ArticleCreateDTO request,
-                                             @RequestParam(value = "category", required = false) String categoryId){
+                                             @RequestParam(value = "category", required = false) String categoryId) throws IOException {
 
         ArticleDTO article = mapper.mapDTO(articleAdapter.create(request, categoryId));
 

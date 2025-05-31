@@ -1,6 +1,7 @@
 package com.example.optimizerpc.controllers.Category;
 
 import com.example.optimizerpc.models.adapters.Category.CategoryAdapter;
+import com.example.optimizerpc.models.dtos.Article.ArticleDTO;
 import com.example.optimizerpc.models.dtos.Category.CategoryDTO;
 import com.example.optimizerpc.models.mappers.Category.CategoryMapper;
 import com.example.optimizerpc.models.services.Category.ICategoryService;
@@ -11,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -33,5 +36,14 @@ public class CategoryGetController {
         CategoryDTO categoryDTO = mapper.mapDTO(categoryService.findById(id));
 
         return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/s/categories")
+    @Operation(summary = "Get all category", description = "Get all category")
+    public ResponseEntity<List<CategoryDTO>> getAll(){
+
+        List<CategoryDTO> categoryList = categoryService.findAll().stream().map(mapper::mapDTO).toList();
+
+        return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
 }
