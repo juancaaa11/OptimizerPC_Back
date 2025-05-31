@@ -18,6 +18,9 @@ public class ArticleCreateDTO {
     private String name;
 
     @NotNull
+    private String image;
+
+    @NotNull
     @NotBlank
     private Double price;
 }

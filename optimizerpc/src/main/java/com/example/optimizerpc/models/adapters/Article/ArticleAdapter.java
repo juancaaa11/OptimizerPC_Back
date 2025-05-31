@@ -30,9 +30,11 @@ public class ArticleAdapter {
     }
 
     @Transactional
-    public Article create(ArticleCreateDTO request, String categoryId, String imageUrl) throws IOException {
+    public Article create(ArticleCreateDTO request, String categoryId) throws IOException {
 
         Category category = categoryService.findById(categoryId);
+
+        String imageUrl = cloudinaryService.uploadBase64(request.getImage());
 
         Article article = Article.builder()
                 .name(request.getName())

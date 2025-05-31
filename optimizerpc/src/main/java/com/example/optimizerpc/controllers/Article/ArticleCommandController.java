@@ -42,13 +42,10 @@ public class ArticleCommandController {
 
     @PostMapping("/article")
     @Operation(summary = "Create a new article.", description = "Create a new article.")
-    public ResponseEntity<ArticleDTO> create(@RequestPart("article") @Valid ArticleCreateDTO request,
-                                             @RequestPart("image") MultipartFile image,
+    public ResponseEntity<ArticleDTO> create(@RequestBody @Valid ArticleCreateDTO request,
                                              @RequestParam(value = "categoryId", required = false) String categoryId) throws IOException {
 
-        String imageUrl = cloudinaryService.uploadImage(image);
-
-        ArticleDTO article = mapper.mapDTO(articleAdapter.create(request, categoryId, imageUrl));
+        ArticleDTO article = mapper.mapDTO(articleAdapter.create(request, categoryId));
 
         return new ResponseEntity<>(article, HttpStatus.CREATED);
     }
